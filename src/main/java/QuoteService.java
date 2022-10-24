@@ -1,21 +1,22 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class QuoteService {
 
-    private static List<Quote> quoteList;
+    private final List<Quote> quoteList;
 
     public QuoteService(List<Quote> quoteList) {
         this.quoteList = quoteList;
     }
 
-    //getAllQuotes():List<String>
-    public static List<String> getAllQuotes() {
-        if (quoteList == null) {
-            throw new ListIsNull();
-        }
+    public List<Quote> getQuoteList() {
+        return quoteList;
+    }
 
+    //getAllQuotes():List<String>
+    public List<String> getAllQuotes() {
         List<String> result = new ArrayList<>();
         for (Quote quote : quoteList) {
             result.add(quote.getQuote());
@@ -24,33 +25,36 @@ public class QuoteService {
     }
 
     //getQuotesForAuthor(String author): List<Quote>
-    public static List<Quote> getQuotesForAuthor(String author) {
-        if (author == null) {
-            throw new ListIsNull();
-        }
-        if (quoteList == null) {
-            throw new ListIsNull();
-        }
+    public List<Quote> getQuotesForAuthor(String author) {
         List<Quote> result = new ArrayList<>();
         for (Quote quote : quoteList) {
-            if (quote.getAuthor().equals(author)) {
+            if (author == null || quote.getAuthor().equals(author)) {
                 result.add(quote);
-                //result.add(quote.getId(),quote.getAuthor(),quote.getQuote());
+            }
+        }
+        return result;
+    }
+
+    //getAuthors(): List<String> (distinct) ?????????
+    public List<String> getAuthors() {
+        List<String> result = new ArrayList<>();
+        String author = null;
+
+        for (Quote quote : quoteList) {
+
+            if(author==null || quote.getAuthor().contains(author)){
+                result.add(quote.getAuthor());
             }
         }
         return result;
 
     }
 
-    //getAuthors(): List<String> (distinct)
-    public static List<String> getAuthors() {
-        List<String> result = new ArrayList<>();
-        String author = null;
+    //- setFavourite(int id)
+    public void setFavourite(int id){
 
-        for (Quote quote : quoteList) {
-
-            result.add(quote.getAuthor());
-        }
+        Quote quote = new Quote();
+        quote.setFavourite(true);
 
     }
 }

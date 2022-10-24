@@ -1,3 +1,3 @@
-public class ListIsNull  extends RuntimeException{
+public class ListIsNull  extends Exception{
 
 }

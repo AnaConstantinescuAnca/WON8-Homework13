@@ -1,12 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.Buffer;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
 public class Quote {
     private int id;
     private final String author;
@@ -22,6 +13,7 @@ public class Quote {
         this.quote = quote;
     }
 
+
     public String getAuthor() {
         return author;
     }
@@ -32,6 +24,19 @@ public class Quote {
 
     public int getId() {
         return id;
+    }
+
+//    public Quote(int id, String author, String quote, boolean favourite) {
+//        this.id = id;
+//        this.author = author;
+//        this.quote = quote;
+//        this.favourite = favourite;
+//    }
+
+    public Quote(){
+        this.id=getId();
+        this.author=getAuthor();
+        this.quote=getQuote();
     }
 
     public void setFavourite(boolean favourite) {

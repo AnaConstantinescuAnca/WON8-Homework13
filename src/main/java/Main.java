@@ -16,9 +16,17 @@ public class Main {
 
         System.out.println(Arrays.asList(quoteList).toString());
 
-       System.out.println(QuoteService.getAllQuotes());
+        QuoteService quoteService = new QuoteService(quoteList);
+       System.out.println(quoteService.getAllQuotes());
 
-        System.out.println(QuoteService.getQuotesForAuthor("Lao Tzu"));
+        System.out.println(quoteService.getQuotesForAuthor("Lao Tzu"));
+
+        System.out.println(quoteService.getAuthors());
+
+        QuoteService quoteFavorites = new QuoteService(quoteList);
+        quoteFavorites.setFavourite(2);
+        //System.out.println(quoteFavorites.setFavourite(2));
+        //System.out.println(QuoteService.setFavourite(14);
 
     }
 }
