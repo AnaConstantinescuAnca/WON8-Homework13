@@ -77,14 +77,17 @@ public class QuoteService {
 
     //getRandomQuote():String : generati un numar random cu ajutorul obiectului java.util.Random si returnati quote-ul cu acel id
     public String getRandomQuote(){
-        String randomQuote = "";
+        //String randomQuote = "";
         Random random = new Random();
         int numberRandom = random.nextInt(0, quoteList.size());
-        for(Quote quote: quoteList){
-            if(quote.getId()==numberRandom){
-                randomQuote=quote.getQuote();
-            }
-        }
-        return  randomQuote;
+//
+//        for (Quote quote : quoteList) {
+//            if (quote.getId() == numberRandom) {
+//                randomQuote = quote.getQuote();
+//            }
+//        }
+//        return  randomQuote;
+        // ca sa nu mai parcurg lista
+        return quoteList.get(numberRandom).getQuote();
     }
 }

@@ -6,12 +6,12 @@ public class ListIsNullException extends Exception {
         err = error;
     }
 
-    public static String validate() throws ListIsNullException {
+    public static ListIsNullException validate() throws ListIsNullException {
 
         ListIsNullException listIsNull = new ListIsNullException();
         listIsNull.addError("List is null");
 
-        return listIsNull.err;
+        return listIsNull;
     }
 
     public static String listEmpty() throws ListIsNullException {
