@@ -2,6 +2,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class QuoteService {
 
@@ -42,19 +43,48 @@ public class QuoteService {
 
         for (Quote quote : quoteList) {
 
-            if(author==null || quote.getAuthor().contains(author)){
+            if (author == null) {
                 result.add(quote.getAuthor());
+            } else {
+                if (!result.contains(author))
+                    result.add(author);
             }
+            author = quote.getAuthor();
+
         }
         return result;
 
     }
 
     //- setFavourite(int id)
-    public void setFavourite(int id){
+    public void setFavourite(int id) {
+        for(Quote quote:quoteList){
+            if(quote.getId()==id){
+                quote.setFavourite(true);
+            }
+        }
+    }
+    //- getFavourites():List<Quote>
+    public List<Quote> getFavourites(){
+        List<Quote> result = new ArrayList<>();
+        for(Quote quote:quoteList){
+            if(quote.isFavourite()){
+                result.add(quote);
+            }
+        }
+        return result;
+    }
 
-        Quote quote = new Quote();
-        quote.setFavourite(true);
-
+    //getRandomQuote():String : generati un numar random cu ajutorul obiectului java.util.Random si returnati quote-ul cu acel id
+    public String getRandomQuote(){
+        String randomQuote = "";
+        Random random = new Random();
+        int numberRandom = random.nextInt(0, quoteList.size());
+        for(Quote quote: quoteList){
+            if(quote.getId()==numberRandom){
+                randomQuote=quote.getQuote();
+            }
+        }
+        return  randomQuote;
     }
 }

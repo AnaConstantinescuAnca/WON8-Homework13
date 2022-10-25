@@ -36,7 +36,7 @@ public class ReadFromFileQuotes {
 
     private static Quote QuoteFromLine(int i, String line) {
         String[] token = line.split(Pattern.quote("~"));
-        return new Quote(i, token[0], token[1]);
+        return new Quote(i, token[0], token[1], false);
     }
 
 

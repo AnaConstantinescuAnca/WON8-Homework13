@@ -5,12 +5,12 @@ public class Quote {
 
     private boolean favourite;
 
-    //= "/resources/quotes.txt";
 
-    public Quote(int id,String author, String quote) {
+    public Quote(int id,String author, String quote, boolean favourite) {
         this.id = id;
         this.author = author;
         this.quote = quote;
+        this.favourite = favourite;
     }
 
 
@@ -26,18 +26,10 @@ public class Quote {
         return id;
     }
 
-//    public Quote(int id, String author, String quote, boolean favourite) {
-//        this.id = id;
-//        this.author = author;
-//        this.quote = quote;
-//        this.favourite = favourite;
-//    }
-
-    public Quote(){
-        this.id=getId();
-        this.author=getAuthor();
-        this.quote=getQuote();
+    public boolean isFavourite() {
+        return favourite;
     }
+
 
     public void setFavourite(boolean favourite) {
         this.favourite = favourite;

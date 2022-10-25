@@ -7,12 +7,9 @@ public class Main {
     private static String pathFile = "files/quotes.txt";
 
     public static void main(String[] args) throws IOException {
-        //System.out.println("My first maven project");
-        //System.out.println(pathFile);
+
         List<Quote> quoteList = ReadFromFileQuotes.ReadFromFile(pathFile);
 
-//      System.out.println(quoteList.get(0).getId() + " " + quoteList.get(0).getAuthor()
-//      + " " + quoteList.get(0).getQuote());
 
         System.out.println(Arrays.asList(quoteList).toString());
 
@@ -23,10 +20,13 @@ public class Main {
 
         System.out.println(quoteService.getAuthors());
 
-        QuoteService quoteFavorites = new QuoteService(quoteList);
-        quoteFavorites.setFavourite(2);
-        //System.out.println(quoteFavorites.setFavourite(2));
-        //System.out.println(QuoteService.setFavourite(14);
+        quoteService.setFavourite(2);
+        quoteService.setFavourite(10);
+        quoteService.setFavourite(100);
+
+        System.out.println((quoteService.getFavourites()));
+        System.out.println(quoteService.getRandomQuote());
+
 
     }
 }
